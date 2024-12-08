@@ -1,0 +1,27 @@
+(defcfg
+  input  (device-file "/dev/input/by-id/usb-0416_Gaming_Keyboard-event-kbd")
+  output (uinput-sink "Home Row Mods")
+
+  ;; This option tells KMonad to let non-configured keys act normal
+  fallthrough true
+)
+
+(defsrc
+    s    d    f    g    h    j    k    l
+    ret  dot 
+)
+
+(defalias
+    alt_s (tap-hold-next-release 200 s lalt)
+    ctl_d (tap-hold-next-release 200 d lctl)
+    sft_f (tap-hold-next-release 250 f lsft)
+
+    sft_j (tap-hold-next-release 200 j rsft)
+    ctl_k (tap-hold-next-release 200 k rctl)
+    alt_l (tap-hold-next-release 200 l lalt)
+)
+
+(deflayer homerowmods
+       @alt_s   @ctl_d   @sft_f   g   h   @sft_j   @ctl_k   @alt_l
+       dot ret
+)
