@@ -8,20 +8,22 @@
 
 (defsrc
     s    d    f    g    h    j    k    l
-    ret  dot 
+    ret  ralt caps esc .
 )
 
 (defalias
     alt_s (tap-hold-next-release 200 s lalt)
     ctl_d (tap-hold-next-release 200 d lctl)
-    sft_f (tap-hold-next-release 250 f lsft)
+    sft_f (tap-hold-next-release 200 f lsft)
 
     sft_j (tap-hold-next-release 200 j rsft)
     ctl_k (tap-hold-next-release 200 k rctl)
     alt_l (tap-hold-next-release 200 l lalt)
+
+    dot_ret (tap-hold-next-release 200 . ret)
 )
 
 (deflayer homerowmods
        @alt_s   @ctl_d   @sft_f   g   h   @sft_j   @ctl_k   @alt_l
-       dot ret
+       ret ret caps esc @dot_ret
 )
